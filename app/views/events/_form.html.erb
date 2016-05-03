@@ -1,0 +1,15 @@
+<%= simple_form_for(@event) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :start_datetime %>
+    <%= f.input :end_datetime %>
+    <%= f.input :description %>
+    <%= f.input :maximum_quantity %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
