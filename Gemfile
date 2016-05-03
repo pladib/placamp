@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'figaro'
 gem 'omniauth-facebook'
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
