@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'figaro'
 gem 'omniauth-facebook'
+gem 'pry-rails'
+gem 'pundit'
 gem 'simple_form'
 
 group :development, :test do
