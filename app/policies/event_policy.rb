@@ -1,14 +1,14 @@
 class EventPolicy < ApplicationPolicy
   def index?
-    admin?
+    true
   end
 
   def create?
-    user
+    admin?
   end
 
   def update?
-    user
+    admin?
   end
 
   def destroy?
@@ -16,7 +16,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def booked?
-    user.events.include?(record)
+    user&.events&.include?(record)
   end
 
   def bookable?
@@ -28,4 +28,5 @@ private
   def admin?
     user&.admin?
   end
+
 end

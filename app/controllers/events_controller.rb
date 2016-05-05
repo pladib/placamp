@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :book]
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_event, only: [:show, :edit, :update, :destroy,
+                                    :book, :cancel_booking]
 
   # GET /events
   # GET /events.json
@@ -62,16 +64,25 @@ class EventsController < ApplicationController
     end
   end
 
+  # GET /events.json
+  def latest
+    authorize Event.last, :show?
+    @event = Event.last
+    render :show
+  end
+
   # POST /events/book
   def book
     current_user.events << @event
+    redirect_to events_url, notice: 'You have successfully booked the event.'
   end
 
   # DELETE
   def cancel_booking
-    current_user.events.destroy @event
+    current_user.bookings.find_by(event: @event).destroy
+    redirect_to events_url, notice: 'You have successfully cancelled the booking.'
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event

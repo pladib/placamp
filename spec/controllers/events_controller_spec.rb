@@ -8,14 +8,14 @@ RSpec.describe EventsController, :type => :controller do
   it "books an event" do
     event = create :event
     post :book, params: {id: event.id}
-    expect(Booking.count).to be 1
+    expect(Booking.count).to eq 1
   end
 
   it "cancel an event" do
     event = create :event
     post :book, params: {id: event.id}
-    expect(Booking.count).to be 1
+    expect(Booking.count).to eq 1
     delete :cancel_booking, params: {id: event.id}
-    expect(Booking.count).to be 0
+    expect(Booking.count).to eq 0
   end
 end

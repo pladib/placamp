@@ -22,13 +22,23 @@
         <td><%= event.end_datetime %></td>
         <td><%= event.description %></td>
         <td><%= event.maximum_quantity %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% if current_user&.admin? %>
+
+          <td><%= link_to 'Show', event %></td>
+          <td><%= link_to 'Edit', edit_event_path(event) %></td>
+          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% end %>
+
         <% if policy(event).bookable? %>
+
           <td> <%= link_to 'Book', book_event_path(event), method: :post %> </td>
+
         <% elsif policy(event).booked? %>
-          <td> <%= link_to 'Cancel', '#' %> </td>
+
+          <td> <%= link_to 'Cancel', cancel_booking_event_path(event), method: :delete %> </td>
+
         <% end %>
       </tr>
     <% end %>
@@ -37,4 +47,6 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<% if current_user&.admin? %>
+  <%= link_to 'New Event', new_event_path %>
+<% end %>

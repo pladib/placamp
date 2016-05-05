@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  root to: 'pages#home'
+  root to: 'events#latest'
 
   get 'pages/home'
   resources :events do
+    get 'latest', on: :collection
     post 'book', on: :member
     delete 'cancel_booking', on: :member
   end
