@@ -1,18 +1,18 @@
 class EventPolicy < ApplicationPolicy
   def index?
-    user.admin?
+    admin?
   end
 
   def create?
-    user.admin?
+    user
   end
 
   def update?
-    user.admin?
+    user
   end
 
   def destroy?
-    user.admin?
+    admin?
   end
 
   def booked?
@@ -20,6 +20,12 @@ class EventPolicy < ApplicationPolicy
   end
 
   def bookable?
-    !booked?
+    user && !booked?
+  end
+
+private
+
+  def admin?
+    user&.admin?
   end
 end
