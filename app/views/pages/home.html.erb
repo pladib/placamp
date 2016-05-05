@@ -2,6 +2,7 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 
 <% if user_signed_in? %>
+  <%= link_to 'Event List', Event %>
   <%= image_tag current_user.image %>
   <%= current_user.name %>
   <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %>
