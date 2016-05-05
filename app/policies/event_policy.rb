@@ -23,6 +23,14 @@ class EventPolicy < ApplicationPolicy
     user && !booked?
   end
 
+  def book?
+    bookable?
+  end
+
+  def cancel_booking?
+    booked?
+  end
+
 private
 
   def admin?
