@@ -26,7 +26,7 @@
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% if policy(event).bookable? %>
-          <td> <%= link_to 'Book', '#' %> </td>
+          <td> <%= link_to 'Book', book_event_path(event), method: :post %> </td>
         <% elsif policy(event).booked? %>
           <td> <%= link_to 'Cancel', '#' %> </td>
         <% end %>

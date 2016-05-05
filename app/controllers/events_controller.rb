@@ -62,10 +62,16 @@ class EventsController < ApplicationController
     end
   end
 
+  # POST /events/book
   def book
     current_user.events << @event
   end
 
+  # DELETE
+  def cancel_booking
+    current_user.events.destroy @event
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event

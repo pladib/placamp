@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'pages/home'
   resources :events do
     post 'book', on: :member
+    delete 'cancel_booking', on: :member
   end
 
   # devise_for :users
