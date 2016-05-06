@@ -11,7 +11,7 @@
   <body>
 
     <% if user_signed_in? %>
-      <%= image_tag current_user.image %>
+      <%= image_tag current_user.profile_image %>
       <%= current_user.name %>
       <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %>
     <% else %>

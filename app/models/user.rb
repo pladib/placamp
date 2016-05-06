@@ -25,4 +25,8 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def profile_image
+    self.image || ActionController::Base.helpers.image_path("no-profile.png")
+  end
 end
