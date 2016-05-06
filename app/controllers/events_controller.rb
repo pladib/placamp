@@ -76,8 +76,13 @@ class EventsController < ApplicationController
 
   # POST /events/book
   def book
-    current_user.events << @event
-    redirect_to events_url, notice: 'You have successfully booked the event.'
+    booking = Booking.new(user: current_user, event: @event)
+    if booking.save
+      BookingMailer.booking_confirmation_email(booking).deliver_later
+      redirect_to events_url, notice: 'You have successfully booked the event.'
+    else
+      redirect_to events_url, alert: booking.errors
+    end
   end
 
   # DELETE

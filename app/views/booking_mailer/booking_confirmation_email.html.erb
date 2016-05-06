@@ -1,0 +1,16 @@
+<h1>Hi, <%= @user.name %>!</h1>
+<p>
+  You've already booked the ticket to <strong><%= @event.name %></strong>
+  and this is your online ticket!
+</p>
+<img src="<%= @qr_url %>" alt="qr_url" />
+
+<h2>Event date:</h2>
+<p><%= @event.start_datetime %> - <%= @event.end_datetime %> </p>
+
+<h2>Event description:</h2>
+<p>
+  <%= @event.description %>
+</p>
+
+<p>Thanks for joining and have a great day!</p>
