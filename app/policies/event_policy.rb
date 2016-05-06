@@ -3,6 +3,10 @@ class EventPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    true
+  end
+
   def create?
     admin?
   end

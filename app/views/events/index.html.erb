@@ -22,10 +22,10 @@
         <td><%= event.end_datetime %></td>
         <td><%= event.description %></td>
         <td><%= event.maximum_quantity %></td>
+        <td><%= link_to 'Show', event %></td>
 
         <% if current_user&.admin? %>
 
-          <td><%= link_to 'Show', event %></td>
           <td><%= link_to 'Edit', edit_event_path(event) %></td>
           <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
