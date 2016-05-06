@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   root to: 'events#index'
 
   get 'pages/home'
+  
+  resources :users
   resources :events do
     get 'latest', on: :collection
     post 'book', on: :member
     delete 'cancel_booking', on: :member
   end
 
-  # devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
