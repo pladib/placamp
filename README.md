@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Event meterial
+* Scope and Context: https://docs.google.com/presentation/d/1lAaNGi7yu8czsoHsccVu3XnrMYgudcGzE67tKRJNf_0/edit?usp=sharing
